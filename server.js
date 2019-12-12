@@ -1,10 +1,12 @@
-// Declaring global variables
+// Declaring global variables & dependencies
 var express = require("express");
-
-// Declaring app port
-var PORT = process.env.PORT || 8080;
+var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
 var app = express();
+
+// Declaring app port
+var PORT = process.env.PORT || 8000;
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -22,10 +24,10 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them.
 var routes = require("./controllers/burgers_controller.js");
 
-app.use(routes);
+app.use("/", routes);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
   // Log (server-side) when our server has started
-  console.log("Burger App is listening on: http://localhost:" + PORT);
+  console.log("Patties App is listening on: http://localhost:" + PORT);
 });

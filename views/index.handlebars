@@ -1,48 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Burgers! </title>
-</head>
-<body>
-    <h1>Burgers!</h1>
+<div class="container bg">
+	<div class="row">
+	    <div class="center col-sm-12">
+			<img src="assets/img/burger.jpg">
+	        <h1>Eat-Da-Burger Menu</h1>
+	        <p></p>
+	    </div>
+  	</div>
 
-<h2>Burgers not devoured!</h2>
-<ul>
-  {{#each burger}}
-    {{#unless devoured}}
-      {{> burger/burger-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+	<div class="row">
+	    <div class="col-sm-6">
 
-<h2>Burgers devoured!</h2>
-<ul>
-  {{#each burger}}
-    {{#if devoured}}
-      {{> burger/burger-block devoured=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+			<br>
+			<h3>Patties Ready To Enjoy!</h3>
+			<ul>
+			  {{#each burgers}}
+			    {{#unless this.devoured}}
+			      <li>
+			      	{{this.id}}
+			        {{this.burger_name}}
+			        <form action="/{{this.id}}?_method=PUT" method="POST">
+			          <input type="hidden" name="devoured" value="true">
+			          <button class="main-btn" type="submit">Enjoy It!</button>
+			        </form>
+			      </li>
+			    {{/unless}}
+			  {{/each}}
+			</ul>
+	    </div>
 
-<h2>Add a Burger</h2>
-<form class="create-form">
+	    <div class="col-sm-6">
+			<h2>Patties That Have Been Enjoyed!</h2>
+			
+			  {{#each burgers}}
+			    {{#if this.devoured}}
+			      <li>
+			      	{{this.id}}
+			        {{this.burger_name}}
+			      </li>
+			    {{/if}}
+			  {{/each}}
+	    </div>
+  	</div>
+	
+	<div class="row">
+	    <div class="center col-sm-12">
 
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
-  </div>
+			<h2>Add A Patty!</h2>
 
-  <div class="form-group">
-    <label for="devoured">Devoured?</label><br>
-    <input type="radio" name="devoured" value="1" checked> Devoured!<br>
-    <input type="radio" name="devoured" value="0"> Not Devoured!
-  </div>
+			<form class="create-update-form" action="/" method="POST">
 
-  <button type="submit">Add Burger</button>
-</form>
-
-</body>
-</html>
+			  <div class="form-group">
+			    <p>Enter a patty you want to enjoy</p>
+			    <input type="text" id="ca" name="burger_name">
+			  </div>
+			  <button class="main-btn" type="submit">Ask your Patty Now</button>
+			</form>
+	    </div>
+  	</div>
+</div>
