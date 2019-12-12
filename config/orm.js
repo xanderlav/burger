@@ -1,5 +1,5 @@
-// Declare global variables
-var orm = require("../config/connection.js");
+// Declare global variables & dependencies
+var connection = require("../config/connection.js");
 
 // Helper function for SQL syntax.
 // Let's say we want to pass 3 values into the mySQL query.

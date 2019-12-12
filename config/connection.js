@@ -1,4 +1,4 @@
-// Declaring global variables
+// Declaring global variables & dependencies
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
@@ -12,10 +12,11 @@ var connection = mysql.createConnection({
 // Establishing DB connection 
 connection.connect(function(err) {
     if(err){
-    console.error("Error connecting " + err.stack);
+    console.error(` Error connecting  ${err.stack}`);
     return;
     }
-    console.log(`Connected as ID ${connection.threadId}`);
+    console.log(` Connected as ID ${connection.threadId}`);
 });
 
+// Export connection for ORM to use.
 module.exports = connection;
