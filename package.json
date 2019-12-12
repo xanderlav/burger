@@ -1,0 +1,31 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "Project Burger Node Express Handlebars",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xanderlav/burger.git"
+  },
+  "keywords": [
+    "Burger",
+    "Express",
+    "Handlebars"
+  ],
+  "author": "Alejandro R. López Avila",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xanderlav/burger/issues"
+  },
+  "homepage": "https://github.com/xanderlav/burger#readme"
+}
