@@ -1,13 +1,19 @@
 // Declaring global variables & dependencies
 var mysql = require("mysql");
 
-var connection = mysql.createConnection({
-    port: 3306,
-    user: "root",
-    host: "localhost",
-    password: "Xanderlav9731",
-    database: "burgers_db"
-});
+var connection;
+
+if(process.env.JAWSBD_URL)
+    connection = mysql.createConnection(process.env.JAWSBD_URL);
+    else {
+        connection = mysql.createConnection({
+        port: 3306,
+        user: "root",
+        host: "localhost",
+        password: "Xanderlav9731",
+        database: "burgers_db"
+    });
+}
 
 // Establishing DB connection 
 connection.connect(function(err) {
